@@ -19,10 +19,49 @@ export const IMAGE_QUERY = defineQuery(`{
   }
 }`);
 
-export const POSTS_QUERY = defineQuery(`*[_type == "post" && defined(slug.current)][0...12]{
-  _id, title, slug
+export const POSTS_QUERY
+  = defineQuery(`*[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{
+  _id,
+  title,
+  slug,
+  body,
+  mainImage,
+  publishedAt,
+  "categories": coalesce(
+    categories[]->{
+      _id,
+      slug,
+      title
+    },
+    []
+  ),
+  author->{
+    name,
+    image
+  }
 }`);
 
-export const POST_QUERY = defineQuery(`*[_type == "post" && slug.current == $slug][0]{
-  title, body, mainImage ${IMAGE_QUERY}
+export const POSTS_SLUGS_QUERY
+  = defineQuery(`*[_type == "post" && defined(slug.current)]{ 
+  "slug": slug.current
+}`);
+export const POST_QUERY
+  = defineQuery(`*[_type == "post" && slug.current == $slug][0]{
+  _id,
+  title,
+  body,
+  mainImage,
+  publishedAt,
+  "categories": coalesce(
+    categories[]->{
+      _id,
+      slug,
+      title
+    },
+    []
+  ),
+  author->{
+    name,
+    image
+  }
 }`);
