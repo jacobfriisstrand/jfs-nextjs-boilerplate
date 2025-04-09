@@ -141,6 +141,40 @@ export type PageBuilder = Array<{
   _key: string;
 } & Faqs>;
 
+export type Navigation = {
+  _id: string;
+  _type: "navigation";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  items?: Array<{
+    label?: string;
+    isSubmenu?: boolean;
+    linkType?: "internal" | "external";
+    internalLink?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "page";
+    };
+    externalUrl?: string;
+    subItems?: Array<{
+      label?: string;
+      linkType?: "internal" | "external";
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      externalUrl?: string;
+      _key: string;
+    }>;
+    _type: "navigationItem";
+    _key: string;
+  }>;
+};
+
 export type Hero = {
   _type: "hero";
   title?: string;
@@ -325,7 +359,7 @@ export type Faq = {
   body?: RichText;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | TextAndImage | RichText | Redirect | PageBuilder | Hero | ImageFieldType | GlobalSettings | Page | Slug | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Seo | Features | Faqs | Faq;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | TextAndImage | RichText | Redirect | PageBuilder | Navigation | Hero | ImageFieldType | GlobalSettings | Page | Slug | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Seo | Features | Faqs | Faq;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: PAGE_QUERY

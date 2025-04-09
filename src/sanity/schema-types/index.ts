@@ -6,6 +6,7 @@ import { featuresType } from "./features-type";
 import { globalSettingsType } from "./global-settings-type";
 import { heroType } from "./hero-type";
 import { imageFieldType } from "./image-field-type";
+import { navigationType } from "./navigation-type";
 import { pageBuilderType } from "./page-builder-type";
 import { pageType } from "./page-type";
 import { redirectType } from "./redirect-type";
@@ -21,6 +22,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     globalSettingsType,
     heroType,
     imageFieldType,
+    navigationType,
     pageBuilderType,
     pageType,
     redirectType,

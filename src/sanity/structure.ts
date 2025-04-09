@@ -9,6 +9,16 @@ export const structure: StructureResolver = S =>
       S.documentTypeListItem("faq").title("FAQs"),
       S.divider(),
       S.listItem()
+        .id("navigation")
+        .schemaType("navigation")
+        .title("Navigation")
+        .child(
+          S.editor()
+            .id("navigation")
+            .schemaType("navigation")
+            .documentId("navigation"),
+        ),
+      S.listItem()
         .id("globalSettings")
         .schemaType("globalSettings")
         .title("Global Settings")
@@ -21,6 +31,6 @@ export const structure: StructureResolver = S =>
       ...S.documentTypeListItems().filter(
         item =>
           item.getId()
-          && !["page", "faq", "globalSettings"].includes(item.getId()!),
+          && !["page", "faq", "globalSettings", "navigation"].includes(item.getId()!),
       ),
     ]);
