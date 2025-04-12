@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 
-import { client } from "../lib/client";
+import { client } from "../../lib/client";
 
 export const apiVersion = process.env.SANITY_API_VERSION || "2025-03-26";
 

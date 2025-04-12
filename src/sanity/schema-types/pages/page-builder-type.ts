@@ -6,7 +6,6 @@ export const pageBuilderType = defineType({
   of: [
     defineArrayMember({ type: "hero" }),
     defineArrayMember({ type: "textAndImage" }),
-    defineArrayMember({ type: "features" }),
     defineArrayMember({ type: "faqs" }),
   ],
 

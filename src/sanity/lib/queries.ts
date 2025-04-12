@@ -47,6 +47,13 @@ const CONTENT_QUERY = `content[]{
   }
 }`;
 
+export const NOT_FOUND_PAGE_QUERY = defineQuery(`*[_id == "globalSettings"][0]{
+    notFoundPage->{
+      ...,
+      ${SEO_QUERY}
+      ${CONTENT_QUERY}
+    }
+  }`);
 export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slug][0]{
   ...,
   ${SEO_QUERY}

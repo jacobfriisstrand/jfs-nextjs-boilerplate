@@ -12,10 +12,10 @@ type HeroProps = Extract<
 export function Hero({ title, text, image }: HeroProps) {
   return (
     <section className="w-full py-16 relative">
-      <div className="relative flex flex-col items-center gap-8 z-20">
+      <div className="relative flex flex-col items-center text-center gap-8 z-20">
         {title
           ? (
-              <h1 className="text-4xl font-medium text-center max-w-2xl">
+              <h1 className="text-4xl font-medium max-w-2xl">
                 {title}
               </h1>
             )

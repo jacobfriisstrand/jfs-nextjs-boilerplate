@@ -12,6 +12,7 @@ export const globalSettingsType = defineType({
       description: "Select the page that will be used as the homepage.",
       type: "reference",
       to: [{ type: "page" }],
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: "favicon",
@@ -21,6 +22,14 @@ export const globalSettingsType = defineType({
       options: {
         accept: "image/png, image/x-icon, image/svg+xml",
       },
+    }),
+    defineField({
+      name: "notFoundPage",
+      title: "'Not Found' page",
+      description: "Select the page that will be used as the not found page. This page will be displayed when a user navigates to a page that does not exist.",
+      type: "reference",
+      to: [{ type: "page" }],
+      validation: Rule => Rule.required(),
     }),
   ],
   preview: {

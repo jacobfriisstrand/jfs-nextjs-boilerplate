@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { notFound } from "next/navigation";
+
 import { PageBuilderWrapper } from "@/components/page-builder-wrapper";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
@@ -48,6 +50,10 @@ export async function generateMetadata({
 }
 export default async function Page({ params }: RouteProps) {
   const { data: page } = await getPage(params);
+
+  if (!page || !page.homePage) {
+    notFound();
+  }
 
   return (
     <>
