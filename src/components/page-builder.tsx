@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import type { PAGE_QUERYResult } from "@/sanity/types";
 
 import { FAQs } from "@/components/faqs";
-import { Features } from "@/components/features";
 import { Hero } from "@/components/hero";
 import { TextAndImage } from "@/components/text-and-image";
 import { createDataAttributeConfig } from "@/sanity/lib/data-attribute-config";
@@ -71,12 +70,6 @@ export function PageBuilder({
             return (
               <DragHandle key={block._key} blockKey={block._key} documentId={documentId} documentType={documentType}>
                 <Hero {...block} />
-              </DragHandle>
-            );
-          case "features":
-            return (
-              <DragHandle key={block._key} blockKey={block._key} documentId={documentId} documentType={documentType}>
-                <Features {...block} />
               </DragHandle>
             );
           case "textAndImage":
