@@ -40,15 +40,17 @@ export const navigationType = defineType({
               validation: Rule => Rule.required(),
             }),
             defineField({
-              name: "isSubmenu",
-              type: "boolean",
-              title: "Is submenu",
-              initialValue: false,
-            }),
-            defineField({
               name: "link",
               type: "linkFieldType",
               title: "Link",
+              hidden: ({ parent }) => parent?.isSubmenu === true,
+            }),
+            defineField({
+              name: "isSubmenu",
+              type: "boolean",
+              title: "Is submenu",
+              description: "If enabled, the navigation item will open a submenu",
+              initialValue: false,
             }),
             defineField({
               name: "subItems",
